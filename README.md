@@ -1,8 +1,12 @@
-# `bbx-audio`
+# `flora`
 
-> A lightweight C++ library for audio DSP 🧮
+> Collection of C++ patches for the Electrosmith Daisy 🌱
 
 ## Overview
+
+...
+
+## Setup
 
 ...
 

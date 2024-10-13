@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(BBX_AUDIO VERSION 0.1.0 LANGUAGES CXX)
+project(FLORA VERSION 0.1.0 LANGUAGES CXX)
 
-add_library(bbx_audio STATIC
+add_library(flora STATIC
+    src/flora.h
     src/sample.cpp
 )
 
-set_target_properties(bbx_audio PROPERTIES PUBLIC
+set_target_properties(flora PROPERTIES PUBLIC
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED
 )
 
-# Include directories
-target_include_directories(bbx_audio PUBLIC src)
+target_include_directories(flora PUBLIC src)

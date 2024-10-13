@@ -1,3 +1,11 @@
-# template
+# `bbx-audio`
 
-This is a generic template repository to be used for any future project.
+> A lightweight C++ library for audio DSP 🧮
+
+## Overview
+
+...
+
+## Usage
+
+...

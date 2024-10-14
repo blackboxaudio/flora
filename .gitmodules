@@ -1,0 +1,9 @@
+[submodule "lib/cortex"]
+	path = lib/cortex
+	url = https://github.com/blackboxdsp/cortex.git
+[submodule "lib/daisy-sp"]
+	path = lib/daisy-sp
+	url = https://github.com/electro-smith/DaisySP
+[submodule "lib/lib-daisy"]
+	path = lib/lib-daisy
+	url = https://github.com/electro-smith/libDaisy

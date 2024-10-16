@@ -11,7 +11,7 @@ LIBCORTEX_DIR = $(EXT_LIB_DIR)/cortex
 
 # Include Cortex library
 C_INCLUDES += -I$(LIBCORTEX_DIR)/src
-#LIBS += -cortex
+LIBS += -lcortex
 LIBDIR += -L$(LIBCORTEX_DIR)/target/release
 
 # Include Daisy library Makefile

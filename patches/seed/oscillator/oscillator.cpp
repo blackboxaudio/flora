@@ -14,9 +14,9 @@ Context context {
 
 Oscillator oscillator(context, 110.0f);
 
-void AudioCallback(AudioHandle::InterleavingInputBuffer  in,
-                   AudioHandle::InterleavingOutputBuffer out,
-                   size_t                                size)
+void AudioCallback(AudioHandle::InterleavingInputBuffer in,
+    AudioHandle::InterleavingOutputBuffer out,
+    size_t size)
 {
     for(size_t idx = 0; idx < size; idx += 2)
     {

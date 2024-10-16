@@ -18,6 +18,11 @@ jobs:
               with:
                   submodules: recursive
 
+            - name: "Install ARM Toolchain"
+              uses: carlosperate/arm-none-eabi-gcc-action@v1
+              with:
+                  release: '10-2020-q4'
+
             - name: "Build Dependencies"
               working-directory: ${{runner.workspace}}/flora
               run: ./scripts/build.sh

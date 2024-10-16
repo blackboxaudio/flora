@@ -12,8 +12,7 @@ int main(void)
     hardware.Configure();
     hardware.Init();
 
-    while(1)
-    {
+    while (1) {
         hardware.SetLed(led_state);
 
         led_state = !led_state;

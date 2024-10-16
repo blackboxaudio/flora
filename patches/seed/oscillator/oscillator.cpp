@@ -1,10 +1,10 @@
-#include "daisy_seed.h"
 #include "cortex.h"
+#include "daisy_seed.h"
 
 using namespace daisy;
 using namespace cortex;
 
-DaisySeed  hardware;
+DaisySeed hardware;
 
 Context context {
     (size_t)hardware.AudioSampleRate(),
@@ -18,14 +18,12 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     AudioHandle::InterleavingOutputBuffer out,
     size_t size)
 {
-    for(size_t idx = 0; idx < size; idx += 2)
-    {
+    for (size_t idx = 0; idx < size; idx += 2) {
         auto sample = (float)oscillator.Generate();
         out[idx] = sample;
         out[idx + 1] = sample;
     }
 }
-
 
 int main(void)
 {
@@ -36,5 +34,5 @@ int main(void)
     hardware.adc.Start();
     hardware.StartAudio(AudioCallback);
 
-    while(1) {}
+    while (1) { }
 }

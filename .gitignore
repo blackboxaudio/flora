@@ -2,6 +2,9 @@
 #### C++
 #### #### #### ####
 
+# Makefile
+**/build/
+
 # CMake
 cmake-build-*/
 

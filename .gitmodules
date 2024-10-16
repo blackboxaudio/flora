@@ -1,6 +1,6 @@
-[submodule "lib/cortex"]
+[submodule "cortex"]
 	path = lib/cortex
 	url = https://github.com/blackboxdsp/cortex
-[submodule "lib/libDaisy"]
-	path = lib/libDaisy
+[submodule "libDaisy"]
+	path = vendor/libDaisy
 	url = https://github.com/electro-smith/libDaisy

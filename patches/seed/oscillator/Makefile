@@ -5,9 +5,8 @@ TARGET = Oscillator
 CPP_SOURCES = oscillator.cpp
 
 # Library Directories
-EXT_LIB_DIR = ../../../lib
-LIBDAISY_DIR = $(EXT_LIB_DIR)/libDaisy
-LIBCORTEX_DIR = $(EXT_LIB_DIR)/cortex
+LIBDAISY_DIR = ../../../vendor/libDaisy
+LIBCORTEX_DIR = ../../../lib/cortex
 
 # Include Cortex library
 C_INCLUDES += -I$(LIBCORTEX_DIR)/src

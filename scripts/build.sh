@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CORTEX_DIR=$PWD/lib/cortex
-DAISY_DIR=$PWD/lib/libDaisy
+DAISY_DIR=$PWD/vendor/libDaisy
 
 printf "Building Cortex...\n"
 cd $CORTEX_DIR; make -s clean; make -j -s

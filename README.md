@@ -7,8 +7,10 @@
 
 ## Overview
 
-Welcome to Flora! This is a collection of C++ patches for the Electrosmith Daisy platform. It uses an underlying DSP library, [Cortex](https://github.com/blackboxdsp/cortex), for constructing
-the processing chains for different patches. 
+Welcome to Flora! This is a collection of C++ patches for the Electrosmith Daisy platform.
+
+It uses an underlying DSP library, [Cortex](https://github.com/blackboxdsp/cortex), for constructing
+the processing chains for different patches.
 
 ## Getting Started
 
@@ -38,3 +40,51 @@ make program-dfu
 ```
 
 :warning: Be sure to run `make clean` when compiling source code!
+
+## Writing Patches
+
+To write your own patch, you can simply modify an example or copy an example folder and re-write the code as necessary.
+
+Here is an example of a simple oscillator patch:
+```c++
+#include "daisy_seed.h"
+#include "cortex.h"
+
+using namespace daisy;
+using namespace cortex;
+
+DaisySeed  hardware;
+
+Context context {
+    (size_t)hardware.AudioSampleRate(),
+    2,
+    hardware.AudioBlockSize(),
+};
+
+Oscillator oscillator(context, 110.0f);
+
+void AudioCallback(
+    AudioHandle::InterleavingInputBuffer in,
+    AudioHandle::InterleavingOutputBuffer out,
+    size_t size
+) {
+    for(size_t idx = 0; idx < size; idx += 2)
+    {
+        auto sample = (float)oscillator.Generate();
+        out[idx] = sample;
+        out[idx + 1] = sample;
+    }
+}
+
+
+int main(void) {
+    hardware.Configure();
+    hardware.Init();
+    hardware.SetAudioBlockSize(4);
+
+    hardware.adc.Start();
+    hardware.StartAudio(AudioCallback);
+
+    while(1) { }
+}
+```

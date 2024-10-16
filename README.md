@@ -20,11 +20,11 @@ to setup your development environment.
 Clone this repository including the necessary submodules:
 ```bash
 git clone --recurse-submodules https://github.com/blackboxdsp/flora
+cd flora/
 ```
 
 Build the required external libraries:
-```bash 
-# From the repository's root directory
+```bash
 ./scripts/build.sh
 ```
 

@@ -5,21 +5,14 @@ using namespace daisy;
 using namespace cortex;
 
 DaisySeed hardware;
-
-Context context {
-    (size_t)hardware.AudioSampleRate(),
-    2,
-    hardware.AudioBlockSize(),
-};
-
-Oscillator oscillator(context, 110.0f);
+Oscillator oscillator(DEFAULT_CONTEXT, 110.0f);
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     AudioHandle::InterleavingOutputBuffer out,
     size_t size)
 {
     for (size_t idx = 0; idx < size; idx += 2) {
-        auto sample = (float)oscillator.Generate();
+        auto sample = (float) oscillator.Generate();
         out[idx] = sample;
         out[idx + 1] = sample;
     }

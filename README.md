@@ -41,6 +41,11 @@ make program-dfu
 
 :warning: Be sure to run `make clean` when compiling source code!
 
+Alternatively, you can run the `flash.sh` script:
+```bash
+./scripts/flash.sh <PLATFORM> <PATCH>
+```
+
 ## Writing Patches
 
 To write your own patch, you can simply modify an example or copy an example folder and re-write the code as necessary.

@@ -1,8 +1,8 @@
 # Project Name
-TARGET = Oscillator
+TARGET = Daisy
 
 # Source Files
-CPP_SOURCES = oscillator.cpp
+CPP_SOURCES = daisy.cpp
 
 # Library Directories
 LIBDAISY_DIR = ../../../vendor/libDaisy

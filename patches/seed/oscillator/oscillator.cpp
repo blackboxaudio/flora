@@ -12,7 +12,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     size_t size)
 {
     for (size_t idx = 0; idx < size; idx += 2) {
-        auto sample = (float) oscillator.Generate();
+        auto sample = (float)oscillator.Generate();
         out[idx] = sample;
         out[idx + 1] = sample;
     }

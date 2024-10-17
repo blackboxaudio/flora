@@ -1,5 +1,5 @@
-#include "daisy_patch_sm.h"
 #include "cortex.h"
+#include "daisy_patch_sm.h"
 
 using namespace daisy;
 using namespace patch_sm;
@@ -25,15 +25,16 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     oscillator.SetFrequency(freq);
 
     for (size_t idx = 0; idx < size; idx += 2) {
-        auto sample = (float) oscillator.Generate();
+        auto sample = (float)oscillator.Generate();
         out[idx] = sample;
         out[idx + 1] = sample;
     }
 }
 
-int main(void) {
+int main(void)
+{
     hardware.Init();
     hardware.StartAudio(AudioCallback);
 
-    while(1) {}
+    while (1) { }
 }

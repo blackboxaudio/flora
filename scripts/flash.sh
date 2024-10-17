@@ -15,6 +15,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+printf "Flashing patch \"$PATCH\""
 make clean -s
 make -s
 make -s program-dfu

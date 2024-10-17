@@ -15,7 +15,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-printf "Flashing patch \"$PATCH\""
+printf "Flashing \"$PATCH\" to Daisy $PLATFORM...\n"
 make clean -s
 make -s
 make -s program-dfu

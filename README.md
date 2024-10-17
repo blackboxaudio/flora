@@ -32,6 +32,9 @@ Build the required external libraries:
 
 To load a specific patch, first navigate to that patches directory (e.g. `flora/patches/seed/blink`). Then just run a few `make` commands:
 ```bash 
+# Clean the previous build's output (unnecessary for first time)
+make clean
+
 # Compiles the patch's source code
 make
 
@@ -39,9 +42,9 @@ make
 make program-dfu
 ```
 
-:warning: Be sure to run `make clean` when compiling source code!
+:warning: **Make sure your Daisy device is in BOOT mode when flashing programs to it, otherwise you will get an error.**
 
-Alternatively, you can run the `flash.sh` script:
+For an easier way to flash your patches, use `flash.sh` located in the scripts folder:
 ```bash
 ./scripts/flash.sh <PLATFORM> <PATCH>
 ```

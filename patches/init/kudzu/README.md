@@ -1,5 +1,7 @@
 # Kudzu
 
+> Twisting audio like nature's fastest invader 🌿
+
 Kudzu is an expressive distortion patch, named after the invasive vine that 
 grows incredibly fast and smothers other plants, trees, and buildings.
 It folds, twists, and mangles audio for a sometimes unrecognizable outcome. 

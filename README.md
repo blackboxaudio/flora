@@ -55,37 +55,28 @@ To write your own patch, you can simply modify an example or copy an example fol
 
 Here is an example of a simple oscillator patch:
 ```c++
-#include "daisy_seed.h"
 #include "cortex.h"
+#include "daisy_seed.h"
 
 using namespace daisy;
 using namespace cortex;
 
-DaisySeed  hardware;
+DaisySeed hardware;
+Oscillator oscillator;
 
-Context context {
-    (size_t)hardware.AudioSampleRate(),
-    2,
-    hardware.AudioBlockSize(),
-};
-
-Oscillator oscillator(context, 110.0f);
-
-void AudioCallback(
-    AudioHandle::InterleavingInputBuffer in,
+void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     AudioHandle::InterleavingOutputBuffer out,
-    size_t size
-) {
-    for(size_t idx = 0; idx < size; idx += 2)
-    {
+    size_t size)
+{
+    for (size_t idx = 0; idx < size; idx += 2) {
         auto sample = (float)oscillator.Generate();
         out[idx] = sample;
         out[idx + 1] = sample;
     }
 }
 
-
-int main(void) {
+int main(void)
+{
     hardware.Configure();
     hardware.Init();
     hardware.SetAudioBlockSize(4);
@@ -93,6 +84,6 @@ int main(void) {
     hardware.adc.Start();
     hardware.StartAudio(AudioCallback);
 
-    while(1) { }
+    while (1) { }
 }
 ```

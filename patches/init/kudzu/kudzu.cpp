@@ -14,9 +14,11 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     hardware.ProcessAllControls();
 
     float driveKnob = hardware.GetAdcValue(CV_1);
-    float driveCv = 1.0f; // hardware.GetAdcValue(CV_5);
     const float MAX_SATURATION = 24.0f;
-    saturator.SetSaturation((driveKnob * driveCv * MAX_SATURATION) + 1.0f);
+    saturator.SetSaturation((driveKnob * MAX_SATURATION) + 1.0f);
+
+    float symmetryKnob = hardware.GetAdcValue(CV_3);
+    saturator.SetSymmetry(1.0f - symmetryKnob);
 
     float mixKnob = hardware.GetAdcValue(CV_4);
 

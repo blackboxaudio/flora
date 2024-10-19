@@ -13,16 +13,16 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
 {
     hardware.ProcessAllControls();
 
-    float coarse_knob = hardware.GetAdcValue(CV_1);
-    float coarse = cortex::map(coarse_knob, 24.0f, 96.0f);
+    float coarseKnob = hardware.GetAdcValue(CV_1);
+    float coarseTuning = cortex::map(coarseKnob, 24.0f, 96.0f);
 
-    float voct_cv = hardware.GetAdcValue(CV_5);
-    float voct = cortex::map(voct_cv, 0.0f, 60.0f);
+    float vOctCv = hardware.GetAdcValue(CV_5);
+    float vOct = cortex::map(vOctCv, 0.0f, 60.0f);
 
-    float midi_nn = cortex::clamp(coarse + voct, 0.0f, 127.0f);
-    float freq = cortex::midi_to_frequency(midi_nn);
+    float midiNote = cortex::clamp(coarseTuning + vOct, 0.0f, 127.0f);
+    float frequency = cortex::midi_to_frequency(midiNote);
 
-    oscillator.SetFrequency(freq);
+    oscillator.SetFrequency(frequency);
 
     for (size_t idx = 0; idx < size; idx += 2) {
         auto sample = (float)oscillator.Generate();

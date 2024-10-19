@@ -6,12 +6,8 @@ on:
         branches: ['main', 'develop']
 
 jobs:
-    build:
-        runs-on: ${{matrix.os}}
-        strategy:
-            matrix:
-                os: [ubuntu-latest]
-
+    Seed:
+        runs-on: ubuntu-latest
         steps:
             - name: "Checkout"
               uses: actions/checkout@v4
@@ -28,5 +24,30 @@ jobs:
               run: ./scripts/build.sh
 
             - name: "Build Example"
-              working-directory: ${{runner.workspace}}/flora/patches/seed/blink
+              working-directory: ${{runner.workspace}}/flora/patches/seed/daisy
               run: make
+
+    Init:
+        runs-on: ${{matrix.os}}
+        strategy:
+            matrix:
+                os: [ ubuntu-latest ]
+
+        steps:
+            -   name: "Checkout"
+                uses: actions/checkout@v4
+                with:
+                    submodules: recursive
+
+            -   name: "Install ARM Toolchain"
+                uses: carlosperate/arm-none-eabi-gcc-action@v1
+                with:
+                    release: '10-2020-q4'
+
+            -   name: "Build Dependencies"
+                working-directory: ${{runner.workspace}}/flora
+                run: ./scripts/build.sh
+
+            -   name: "Build Example"
+                working-directory: ${{runner.workspace}}/flora/patches/init/daisy
+                run: make

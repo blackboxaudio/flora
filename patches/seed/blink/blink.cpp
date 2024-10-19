@@ -6,16 +6,15 @@ DaisySeed hardware;
 
 int main(void)
 {
-    bool led_state;
-    led_state = true;
+    bool ledState;
+    ledState = true;
 
     hardware.Configure();
     hardware.Init();
 
     while (1) {
-        hardware.SetLed(led_state);
-
-        led_state = !led_state;
+        hardware.SetLed(ledState);
+        ledState = !ledState;
 
         System::Delay(250.0f);
     }

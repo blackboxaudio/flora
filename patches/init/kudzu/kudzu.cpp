@@ -19,18 +19,18 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     toggle.Debounce();
 
     float driveKnob = hardware.GetAdcValue(CV_1);
-    saturator.SetSaturation((driveKnob * 24.0f) + 1.0f);
-    wavefolder.SetInputGain((driveKnob * 6.0f) + 1.0f);
-
     float toneKnob = hardware.GetAdcValue(CV_2);
-    filter.SetCutoffFrequency(cortex::map(toneKnob, 1000.0f, cortex::FILTER_CUTOFF_FREQ_MAX, cortex::Mapping::LOG));
-
     float symmetryKnob = hardware.GetAdcValue(CV_3);
-    saturator.SetSymmetry(1.0f - symmetryKnob);
-    wavefolder.SetSymmetry(1.0f - symmetryKnob);
-
     float mixKnob = hardware.GetAdcValue(CV_4);
     bool useSaturator = toggle.Pressed();
+
+    saturator.SetSaturation((driveKnob * 24.0f) + 1.0f);
+    saturator.SetSymmetry(1.0f - symmetryKnob);
+
+    wavefolder.SetInputGain((driveKnob * 6.0f) + 1.0f);
+    wavefolder.SetSymmetry(1.0f - symmetryKnob);
+
+    filter.SetCutoffFrequency(cortex::map(toneKnob, 1000.0f, cortex::FILTER_CUTOFF_FREQ_MAX, cortex::Mapping::LOG));
 
     for (size_t idx = 0; idx < size; idx++) {
         float originalSample = in[idx];

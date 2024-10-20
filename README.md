@@ -30,7 +30,9 @@ Build the required external libraries:
 
 ## Loading Patches
 
-To load a specific patch, first navigate to that patches directory (e.g. `flora/patches/seed/blink`). Then just run a few `make` commands:
+### Flashing
+
+To load a specific patch to the device, first navigate to that patches directory (e.g. `flora/patches/seed/blink`). Then just run a few `make` commands:
 ```bash 
 # Clean the previous build's output (unnecessary for first time)
 make clean
@@ -49,10 +51,11 @@ For an easier way to flash your patches, use `flash.sh` located in the scripts f
 ./scripts/flash.sh <PLATFORM> <PATCH>
 ```
 
+### Pre-Designed Patches
+
 There are a number of existing patches, which have already been designed:
 
 - Init
-  - [Daisy](./init/daisy) - A basic sine-wave oscillator
   - [Kudzu](./init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
 - Seed
   - [Blink](./seed/blink) - The "hello world" of embedded programming

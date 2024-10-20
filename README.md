@@ -49,6 +49,15 @@ For an easier way to flash your patches, use `flash.sh` located in the scripts f
 ./scripts/flash.sh <PLATFORM> <PATCH>
 ```
 
+There are a number of existing patches, which have already been designed:
+
+- Init
+  - [Daisy](./init/daisy) - A basic sine-wave oscillator
+  - [Kudzu](./init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
+- Seed
+  - [Blink](./seed/blink) - The "hello world" of embedded programming
+  - [Daisy](./seed/daisy) - A basic sine-wave oscillator
+
 ## Writing Patches
 
 To write your own patch, you can simply modify an example or copy an example folder and re-write the code as necessary.

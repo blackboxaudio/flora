@@ -56,10 +56,10 @@ For an easier way to flash your patches, use `flash.sh` located in the scripts f
 There are a number of existing patches, which have already been designed:
 
 - Init
-  - [Kudzu](./init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
+  - [Kudzu](https://github.com/blackboxdsp/flora/tree/develop/patches/init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
 - Seed
-  - [Blink](./seed/blink) - The "hello world" of embedded programming
-  - [Daisy](./seed/daisy) - A basic sine-wave oscillator
+  - [Blink](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/blink) - The "hello world" of embedded programming
+  - [Daisy](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/daisy) - A basic sine-wave oscillator
 
 ## Writing Patches
 

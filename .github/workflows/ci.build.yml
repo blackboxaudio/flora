@@ -49,5 +49,5 @@ jobs:
                 run: ./scripts/build.sh
 
             -   name: "Build Example"
-                working-directory: ${{runner.workspace}}/flora/patches/init/daisy
+                working-directory: ${{runner.workspace}}/flora/patches/init/kudzu
                 run: make

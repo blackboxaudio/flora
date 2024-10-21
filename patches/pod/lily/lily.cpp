@@ -1,5 +1,5 @@
-#include "daisy_pod.h"
 #include "cortex.h"
+#include "daisy_pod.h"
 
 using namespace daisy;
 
@@ -41,4 +41,3 @@ int main(void)
 
     while (1) { }
 }
-

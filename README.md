@@ -58,6 +58,8 @@ There are a number of existing patches, which have already been designed:
 - Init
   - [Kudzu](https://github.com/blackboxdsp/flora/tree/develop/patches/init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
   - [Lotus](https://github.com/blackboxdsp/flora/tree/develop/patches/init/lotus) - A rich binaural oscillator, emitting a harmonic meditation
+- Pod
+  - [Lily](https://github.com/blackboxdsp/flora/tree/develop/patches/pod/lily) - A simple binaural oscillator, overlapping frequencies and phases
 - Seed
   - [Blink](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/blink) - The "hello world" of embedded programming
   - [Daisy](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/daisy) - A basic sine-wave oscillator

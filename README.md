@@ -1,7 +1,7 @@
 # Flora
 
-[![Build](https://github.com/blackboxdsp/flora/actions/workflows/ci.build.yml/badge.svg)](https://github.com/blackboxdsp/flora/actions/workflows/ci.build.yml)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/blackboxdsp/cortex/blob/develop/LICENSE)
+[![Build](https://github.com/blackboxaudio/flora/actions/workflows/ci.build.yml/badge.svg)](https://github.com/blackboxaudio/flora/actions/workflows/ci.build.yml)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/blackboxaudio/cortex/blob/develop/LICENSE)
 
 > Collection of C++ patches for the Electrosmith Daisy 🌱
 
@@ -9,7 +9,7 @@
 
 Welcome to Flora! This is a collection of C++ patches for the Electrosmith Daisy platform.
 
-It uses an underlying DSP library, [Cortex](https://github.com/blackboxdsp/cortex), for constructing
+It uses an underlying DSP library, [Cortex](https://github.com/blackboxaudio/cortex), for constructing
 the processing chains for different patches.
 
 ## Getting Started
@@ -19,7 +19,7 @@ to setup your development environment.
 
 Clone this repository including the necessary submodules:
 ```bash
-git clone --recurse-submodules https://github.com/blackboxdsp/flora
+git clone --recurse-submodules https://github.com/blackboxaudio/flora
 cd flora/
 ```
 
@@ -56,13 +56,13 @@ For an easier way to flash your patches, use `flash.sh` located in the scripts f
 There are a number of existing patches, which have already been designed:
 
 - Init
-  - [Kudzu](https://github.com/blackboxdsp/flora/tree/develop/patches/init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
-  - [Lotus](https://github.com/blackboxdsp/flora/tree/develop/patches/init/lotus) - A rich binaural oscillator, emitting a harmonic meditation
+  - [Kudzu](https://github.com/blackboxaudio/flora/tree/develop/patches/init/kudzu) - An expressive distortion patch that twists, folds, and mangles audio for a sometimes unrecognizable outcome
+  - [Lotus](https://github.com/blackboxaudio/flora/tree/develop/patches/init/lotus) - A rich binaural oscillator, emitting a harmonic meditation
 - Pod
-  - [Lily](https://github.com/blackboxdsp/flora/tree/develop/patches/pod/lily) - A simple binaural oscillator, overlapping frequencies and phases
+  - [Lily](https://github.com/blackboxaudio/flora/tree/develop/patches/pod/lily) - A simple binaural oscillator, overlapping frequencies and phases
 - Seed
-  - [Blink](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/blink) - The "hello world" of embedded programming
-  - [Daisy](https://github.com/blackboxdsp/flora/tree/develop/patches/seed/daisy) - A basic sine-wave oscillator
+  - [Blink](https://github.com/blackboxaudio/flora/tree/develop/patches/seed/blink) - The "hello world" of embedded programming
+  - [Daisy](https://github.com/blackboxaudio/flora/tree/develop/patches/seed/daisy) - A basic sine-wave oscillator
 
 ## Writing Patches
 

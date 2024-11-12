@@ -1,6 +1,6 @@
-[submodule "lib/cortex"]
-	path = lib/cortex
-	url = https://github.com/blackboxaudio/cortex
+[submodule "lib/neuron"]
+	path = lib/neuron
+	url = https://github.com/blackboxaudio/neuron
 [submodule "vendor/libDaisy"]
 	path = vendor/libDaisy
 	url = https://github.com/electro-smith/libDaisy

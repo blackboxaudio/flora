@@ -1,8 +1,8 @@
-#include "cortex.h"
 #include "daisy_seed.h"
+#include "neuron.h"
 
 using namespace daisy;
-using namespace cortex;
+using namespace neuron;
 
 DaisySeed hardware;
 Oscillator oscillator(DEFAULT_CONTEXT, 110.0f);

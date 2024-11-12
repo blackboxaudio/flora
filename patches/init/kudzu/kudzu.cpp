@@ -1,5 +1,5 @@
-#include "cortex.h"
 #include "daisy_patch_sm.h"
+#include "neuron.h"
 
 using namespace daisy;
 using namespace patch_sm;
@@ -7,9 +7,9 @@ using namespace patch_sm;
 DaisyPatchSM hardware;
 Switch toggle;
 
-cortex::Saturator saturator;
-cortex::Wavefolder wavefolder;
-cortex::Filter filter;
+neuron::Saturator saturator;
+neuron::Wavefolder wavefolder;
+neuron::Filter filter;
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     AudioHandle::InterleavingOutputBuffer out,
@@ -30,7 +30,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     wavefolder.SetInputGain((driveKnob * 6.0f) + 1.0f);
     wavefolder.SetSymmetry(1.0f - symmetryKnob);
 
-    filter.SetCutoffFrequency(cortex::map(toneKnob, 1000.0f, cortex::FILTER_CUTOFF_FREQ_MAX, cortex::Mapping::LOG));
+    filter.SetCutoffFrequency(neuron::map(toneKnob, 1000.0f, neuron::FILTER_CUTOFF_FREQ_MAX, neuron::Mapping::LOG));
 
     for (size_t idx = 0; idx < size; idx++) {
         float originalSample = in[idx];

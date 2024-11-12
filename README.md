@@ -1,7 +1,7 @@
 # Flora
 
 [![Build](https://github.com/blackboxaudio/flora/actions/workflows/ci.build.yml/badge.svg)](https://github.com/blackboxaudio/flora/actions/workflows/ci.build.yml)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/blackboxaudio/cortex/blob/develop/LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](https://github.com/blackboxaudio/neuron/blob/develop/LICENSE)
 
 > Collection of C++ patches for the Electrosmith Daisy 🌱
 
@@ -9,7 +9,7 @@
 
 Welcome to Flora! This is a collection of C++ patches for the Electrosmith Daisy platform.
 
-It uses an underlying DSP library, [Cortex](https://github.com/blackboxaudio/cortex), for constructing
+It uses an underlying DSP library, [Neuron](https://github.com/blackboxaudio/neuron), for constructing
 the processing chains for different patches.
 
 ## Getting Started
@@ -70,11 +70,11 @@ To write your own patch, you can simply modify an example or copy an example fol
 
 Here is an example of a simple oscillator patch:
 ```c++
-#include "cortex.h"
+#include "neuron.h"
 #include "daisy_seed.h"
 
 using namespace daisy;
-using namespace cortex;
+using namespace neuron;
 
 DaisySeed hardware;
 Oscillator oscillator;

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-CORTEX_DIR=$PWD/lib/cortex
+NEURON_DIR=$PWD/lib/neuron
 DAISY_DIR=$PWD/vendor/libDaisy
 
-printf "Building Cortex...\n"
-cd $CORTEX_DIR; make -s clean; make -j -s
+printf "Building Neuron...\n"
+cd $NEURON_DIR; make -s clean; make -j -s
 if [ $? -ne 0 ]; then
-    printf "Failed to compile Cortex library\n"
+    printf "Failed to compile Neuron library\n"
     exit 1
 fi
 

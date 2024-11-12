@@ -1,5 +1,5 @@
-#include "cortex.h"
 #include "daisy_patch_sm.h"
+#include "neuron.h"
 
 using namespace daisy;
 using namespace patch_sm;
@@ -7,9 +7,9 @@ using namespace patch_sm;
 DaisyPatchSM hardware;
 Switch toggle;
 
-cortex::Oscillator leader;
-cortex::Oscillator follower;
-cortex::Oscillator lfo;
+neuron::Oscillator leader;
+neuron::Oscillator follower;
+neuron::Oscillator lfo;
 
 const float MAX_DETUNE_AMOUNT = 20.0f;
 
@@ -30,7 +30,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::Interle
         leader.DetachFollower();
     }
 
-    float leaderFrequency = cortex::map(tuneKnob, 65.406f, 261.626f, cortex::Mapping::LOG);
+    float leaderFrequency = neuron::map(tuneKnob, 65.406f, 261.626f, neuron::Mapping::LOG);
     leader.SetFrequency(leaderFrequency);
 
     float followerDetune = MAX_DETUNE_AMOUNT * ((detuneKnob * 2.0f) - 1.0f);

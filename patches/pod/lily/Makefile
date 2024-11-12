@@ -6,11 +6,11 @@ CPP_SOURCES = lily.cpp
 
 # Library Directories
 LIBDAISY_DIR = ../../../vendor/libDaisy
-LIBNEURON_DIR = ../../../lib/cortex
+LIBNEURON_DIR = ../../../lib/neuron
 
 # Include Neuron library
 C_INCLUDES += -I$(LIBNEURON_DIR)/src
-LIBS += -lcortex
+LIBS += -lneuron
 LIBDIR += -L$(LIBNEURON_DIR)/target/release
 
 # Include Daisy library Makefile

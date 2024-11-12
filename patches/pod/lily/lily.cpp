@@ -1,12 +1,12 @@
-#include "cortex.h"
+#include "neuron.h"
 #include "daisy_pod.h"
 
 using namespace daisy;
 
 DaisyPod hardware;
 
-cortex::Oscillator leader;
-cortex::Oscillator follower;
+neuron::Oscillator leader;
+neuron::Oscillator follower;
 
 const float MAX_DETUNE_AMOUNT = 20.0f;
 
@@ -17,7 +17,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::Interle
     float tuneKnob = hardware.knob1.Value();
     float detuneKnob = hardware.knob2.Value();
 
-    float leaderFrequency = cortex::map(tuneKnob, 65.406f, 261.626f, cortex::Mapping::LOG);
+    float leaderFrequency = neuron::map(tuneKnob, 65.406f, 261.626f, neuron::Mapping::LOG);
     leader.SetFrequency(leaderFrequency);
 
     float followerDetune = MAX_DETUNE_AMOUNT * ((detuneKnob * 2.0f) - 1.0f);

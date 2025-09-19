@@ -45,6 +45,7 @@ make program-dfu
 ```
 
 :warning: **Make sure your Daisy device is in BOOT mode when flashing programs to it, otherwise you will get an error.**
+To do this hold down the BOOT button, then press the RESET button, release the RESET button, and finally release the BOOT button.
 
 For an easier way to flash your patches, use `flash.sh` located in the scripts folder:
 ```bash

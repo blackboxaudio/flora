@@ -1,5 +1,5 @@
 #include "daisy_patch_sm.h"
-#include "neuron.h"
+#include "neuron/neuron.h"
 
 using namespace daisy;
 using namespace patch_sm;
@@ -32,11 +32,19 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
 
     filter.SetCutoffFrequency(neuron::map(toneKnob, 1000.0f, neuron::FILTER_CUTOFF_FREQ_MAX, neuron::Mapping::LOG));
 
-    for (size_t idx = 0; idx < size; idx++) {
-        float originalSample = in[idx];
-        auto distortedSample = useSaturator ? saturator.Process(originalSample) : wavefolder.Process(originalSample);
-        auto filteredSample = (float)filter.Process(distortedSample);
-        out[idx] = originalSample * (1.0f - mixKnob) + filteredSample * mixKnob;
+    neuron::Buffer<float> inputBuffer(const_cast<float*>(in), static_cast<int>(size));
+    neuron::Buffer<float> outputBuffer(out, static_cast<int>(size));
+
+    if (useSaturator) {
+        saturator.Process(inputBuffer, outputBuffer);
+    } else {
+        wavefolder.Process(inputBuffer, outputBuffer);
+    }
+
+    filter.Process(outputBuffer, outputBuffer);
+
+    for (int idx = 0; idx < static_cast<int>(size); idx++) {
+        outputBuffer[idx] = outputBuffer[idx] * (1.0f - mixKnob) + outputBuffer[idx] * mixKnob;
     }
 
     hardware.WriteCvOut(2, 5.0f * out[0]);

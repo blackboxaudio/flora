@@ -3,6 +3,13 @@
 PLATFORM=${1:-seed}
 PATCH=${2:-blink}
 
+#cd lib/neuron
+cd ../template-plugin/lib/neuron
+make clean
+make
+#cd ../../
+cd ../../../flora
+
 cd "patches/$PLATFORM"
 if [ $? -ne 0 ]; then
     printf "Cannot find platform directory \"$PWD/patches/$PLATFORM\"\n"

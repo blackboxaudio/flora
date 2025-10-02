@@ -1,12 +1,12 @@
-#include "neuron.h"
+#include "neuron/neuron.h"
 #include "daisy_pod.h"
 
 using namespace daisy;
 
 DaisyPod hardware;
 
-neuron::Oscillator leader;
-neuron::Oscillator follower;
+neuron::Oscillator oscillator;
+neuron::Lfo lfo;
 
 const float MAX_DETUNE_AMOUNT = 20.0f;
 
@@ -14,28 +14,37 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::Interle
 {
     hardware.ProcessAllControls();
 
-    float tuneKnob = hardware.knob1.Value();
-    float detuneKnob = hardware.knob2.Value();
+    float oscTuneKnob = hardware.knob1.Value();
+    float lfoTuneKnob = hardware.knob2.Value();
 
-    float leaderFrequency = neuron::map(tuneKnob, 65.406f, 261.626f, neuron::Mapping::LOG);
-    leader.SetFrequency(leaderFrequency);
+    float lfoFreq = neuron::map(lfoTuneKnob, 0.01f, 24.0f, neuron::Mapping::LOG);
+    lfo.SetFrequency(lfoFreq);
 
-    float followerDetune = MAX_DETUNE_AMOUNT * ((detuneKnob * 2.0f) - 1.0f);
-    follower.SetFrequency(leaderFrequency - followerDetune);
+    lfo.Modulate();
 
-    for (size_t idx = 0; idx < size; idx += 2) {
-        float leaderSample = leader.Generate();
-        float followerSample = follower.Generate();
+    float oscillatorFreq = neuron::map(oscTuneKnob, 65.406f, 261.626f, neuron::Mapping::LOG);
+    oscillator.SetFrequency(oscillatorFreq);
 
-        out[idx] = leaderSample;
-        out[idx + 1] = followerSample;
-    }
+    neuron::Buffer<float> outputBuffer(out, static_cast<int>(size));
+    oscillator.Generate(outputBuffer);
 }
 
 int main(void)
 {
+    neuron::Context context = {
+        48000.0f,
+        2,
+        16
+    };
+
+    lfo.SetContext(context);
+    oscillator.SetContext(context);
+    oscillator.AttachModulator(neuron::OscillatorParameter::OSC_FREQUENCY, &lfo);
+    oscillator.SetModulationDepth(neuron::OscillatorParameter::OSC_FREQUENCY, 1.0f);
+
     hardware.Init();
     hardware.SetAudioBlockSize(16);
+
     hardware.StartAdc();
     hardware.StartAudio(AudioCallback);
 

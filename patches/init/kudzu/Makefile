@@ -9,7 +9,7 @@ LIBDAISY_DIR = ../../../vendor/libDaisy
 LIBNEURON_DIR = ../../../lib/neuron
 
 # Include Neuron library
-C_INCLUDES += -I$(LIBNEURON_DIR)/src
+C_INCLUDES += -I$(LIBNEURON_DIR)/include
 LIBS += -lneuron
 LIBDIR += -L$(LIBNEURON_DIR)/target/release
 

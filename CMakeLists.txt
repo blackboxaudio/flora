@@ -21,9 +21,9 @@ endfunction()
 add_patch(init kudzu)
 add_patch(init lotus)
 
-# pod
+# Pod
 add_patch(pod lily)
 
-# seed
+# Seed
 add_patch(seed blink)
 add_patch(seed daisy)

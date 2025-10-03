@@ -3,12 +3,10 @@
 PLATFORM=${1:-seed}
 PATCH=${2:-blink}
 
-#cd lib/neuron
-cd ../template-plugin/lib/neuron
+cd lib/neuron
 make clean
 make
-#cd ../../
-cd ../../../flora
+cd ../../
 
 cd "patches/$PLATFORM"
 if [ $? -ne 0 ]; then

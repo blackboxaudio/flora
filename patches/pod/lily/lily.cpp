@@ -8,7 +8,9 @@ DaisyPod hardware;
 neuron::Oscillator oscillator;
 neuron::Lfo lfo;
 
-const float MAX_DETUNE_AMOUNT = 20.0f;
+const int BLOCK_SIZE = 16;
+neuron::Context context = { 48000.0f, 2, BLOCK_SIZE };
+neuron::Sample monoBuffer[BLOCK_SIZE];
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::InterleavingOutputBuffer out, size_t size)
 {
@@ -25,25 +27,24 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::Interle
     float oscillatorFreq = neuron::map(oscTuneKnob, 65.406f, 261.626f, neuron::Mapping::LOG);
     oscillator.SetFrequency(oscillatorFreq);
 
-    neuron::Buffer<float> outputBuffer(out, static_cast<int>(size));
-    oscillator.Generate(outputBuffer);
+    neuron::Buffer<float> tempBuffer(monoBuffer, static_cast<int>(size) / 2);
+    oscillator.Generate(tempBuffer);
+
+    for (size_t i = 0, j = 0; i < size; i += 2, j++) {
+        out[i] = monoBuffer[j];
+        out[i + 1] = monoBuffer[j];
+    }
 }
 
 int main(void)
 {
-    neuron::Context context = {
-        48000.0f,
-        2,
-        16
-    };
-
     lfo.SetContext(context);
     oscillator.SetContext(context);
     oscillator.AttachModulator(neuron::OscillatorParameter::OSC_FREQUENCY, &lfo);
     oscillator.SetModulationDepth(neuron::OscillatorParameter::OSC_FREQUENCY, 1.0f);
 
     hardware.Init();
-    hardware.SetAudioBlockSize(16);
+    hardware.SetAudioBlockSize(context.blockSize);
 
     hardware.StartAdc();
     hardware.StartAudio(AudioCallback);

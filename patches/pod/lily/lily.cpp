@@ -1,5 +1,5 @@
-#include "neuron/neuron.h"
 #include "daisy_pod.h"
+#include "neuron/neuron.h"
 
 using namespace daisy;
 

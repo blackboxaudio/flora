@@ -1,16 +1,14 @@
 #!/bin/bash
+#
+# Format every patch with rustfmt.
 
-cd patches/
-if [ $? -ne 0 ]; then
-    printf "Failed to find \"patches\" directory\n"
-    exit 1
-fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$REPO_ROOT" || exit 1
 
-printf "Formatting code...\n"
-find . -iname '*.h' -o -iname '*.cpp' | xargs clang-format -i -style=WebKit
-if [ $? -ne 0 ]; then
-    printf "Failed to format code\n"
-    exit 1
-fi
+printf "Formatting Rust code...\n"
+find patches -name 'Cargo.toml' -exec dirname {} \; | while read -r dir; do
+    (cd "$dir" && cargo fmt)
+done
 
 printf "Done.\n"

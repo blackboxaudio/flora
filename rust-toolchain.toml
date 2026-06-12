@@ -1,0 +1,6 @@
+# Pinned to match the bbx_audio workspace so the bbx_daisy path dependency builds
+# identically. Update both repos together.
+[toolchain]
+channel = "nightly-2025-06-08"
+components = ["clippy", "rustfmt"]
+targets = ["thumbv7em-none-eabihf"]

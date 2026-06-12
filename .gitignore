@@ -1,17 +1,21 @@
 #### #### #### ####
-#### C++
+#### Rust
 #### #### #### ####
 
-# Makefile
-**/build/
-
-# CMake
-cmake-build-*/
+# Cargo build artifacts (each patch builds into its own target/).
+**/target/
 
 #### #### #### ####
 #### IDEs
 #### #### #### ####
 **/.vs/
 **/.vscode/
-
 **/.idea/
+
+#### #### #### ####
+#### Local
+#### #### #### ####
+
+# Unreferenced local clone of bbx_audio. Flora depends on the sibling
+# ../bbx_audio/bbx_daisy crate via a relative path instead.
+/lib/bbx_audio/

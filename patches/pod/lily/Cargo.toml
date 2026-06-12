@@ -1,0 +1,17 @@
+[package]
+name = "lily"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "lily"
+path = "src/main.rs"
+
+[dependencies]
+bbx_daisy = { path = "../../../../bbx_audio/bbx_daisy", default-features = false, features = ["pod"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+panic = "abort"
+codegen-units = 1

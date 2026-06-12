@@ -1,12 +1,12 @@
-# Lily
+# Lily (Pod)
 
-> Overlapping frequencies and phases 🌺
+A binaural oscillator with LFO frequency modulation on the Daisy Pod.
 
-_Lily_ is a basic binaural oscillator patch, named after the water lily it grows with overlapping leaves.
+- **Knob 1** — oscillator tune (65.4–261.6 Hz, C2–C4, logarithmic)
+- **Knob 2** — LFO rate (0.01–24 Hz, logarithmic)
 
-## Controls
+The LFO modulates the oscillator frequency by ±1 Hz to create subtle beating.
 
-| Control    | Name      | Description                                                                                             |
-|------------|-----------|---------------------------------------------------------------------------------------------------------|
-| **Knob 1** | Tune      | The leader oscillator's running frequency (100-400Hz)                                                   |
-| **Knob 2** | Detune    | The speed of the binaural beat, detuning the follower oscillator within 20Hz from the leader oscillator |
+```bash
+./scripts/flash.sh pod lily
+```

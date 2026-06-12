@@ -1,18 +1,17 @@
-# Lotus
+# Lotus (Patch.Init)
 
-> Emitting a harmonic meditation 🪷
+A binaural drone — a `leader` sine (left) and a detuned `follower` sine (right), both
+pitch-modulated by a shared LFO. With B8 off the oscillators free-run and beat; with it on the
+follower is hard-synced to the leader.
 
-_Lotus_ is a rich binaural oscillator patch, named after the Lotus flower which symbolizes spiritual 
-awakening and harmony. It's connection to meditative practices can loosely be connected to the dual-frequency
-harmony of binaural beats.
+- **CV_1** (tune) — leader frequency (65.4–261.6 Hz, C2–C4, logarithmic)
+- **CV_2** (detune) — follower detune (±20 Hz)
+- **CV_3** (lfo rate) — LFO frequency (0.1–1000 Hz)
+- **CV_4** (lfo depth) — LFO pitch-modulation depth
+- **B8** — follower hard-sync (on) vs free-running (off)
 
-## Controls
+> Requires the bbx_daisy Patch.Init control support (CV inputs + B8 switch on PB9).
 
-| Control  | Name      | Description                                                                                             |
-|----------|-----------|---------------------------------------------------------------------------------------------------------|
-| **CV_1** | Tune      | The leader oscillator's running frequency (100-400Hz)                                                   |
-| **CV_2** | Detune    | The speed of the binaural beat, detuning the follower oscillator within 20Hz from the leader oscillator |
-| **CV_3** | LFO Rate  | The speed at which the follower oscillator changes frequency                                            |
-| **CV_4** | LFO Depth | The amount in which the LFO rate affects the follower oscillator's frequency                            | 
-| **B8**   | Sync      | Syncs the two oscillators together when turned on                                                       |
-
+```bash
+./scripts/flash.sh init lotus
+```

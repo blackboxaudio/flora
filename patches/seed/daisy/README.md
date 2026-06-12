@@ -1,5 +1,7 @@
-# Daisy
+# Daisy (Seed)
 
-> Finding blooming beauty in simplicity 🌼
+A fixed 110 Hz sine oscillator on the Daisy Seed, output to both channels — a minimal audio sanity check.
 
-Daisy is a basic patch that features a simple sine wave oscillator.
+```bash
+./scripts/flash.sh seed daisy
+```

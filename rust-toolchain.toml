@@ -1,5 +1,5 @@
-# Pinned to match the bbx_audio workspace so the bbx_daisy path dependency builds
-# identically. Update both repos together.
+# Pinned to match the bbx_audio workspace toolchain (bbx_daisy 0.5 is edition-2024,
+# Rust >= 1.89). Keeps builds reproducible with upstream; update both repos together.
 [toolchain]
 channel = "nightly-2025-06-08"
 components = ["clippy", "rustfmt"]

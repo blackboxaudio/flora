@@ -120,18 +120,20 @@ For more end-to-end examples, see the [bbx_daisy examples](https://github.com/bl
 
 ### Dependencies
 
-While `bbx_daisy` is unpublished, patches depend on it via a local relative path. Flora and
-`bbx_audio` are expected to live side by side under the same parent directory:
+Patches depend on the published [`bbx_daisy`](https://crates.io/crates/bbx_daisy) crate:
 
 ```toml
 [dependencies]
-bbx_daisy = { path = "../../../../bbx_audio/bbx_daisy", default-features = false, features = ["seed"] }
+bbx_daisy = { version = "0.5", default-features = false, features = ["seed"] }
 ```
 
 Use the feature that matches your board — `seed`, `pod`, or `patch_sm` (Patch.Init).
 `default-features = false` is required: `bbx_daisy` defaults to `seed`, and enabling a second
-board feature trips its "exactly one product feature" check. Once `bbx_daisy` is published this
-will become a versioned crates.io dependency.
+board feature trips its "exactly one product feature" check.
+
+For local development against a `bbx_audio` checkout, temporarily point the dependency at a
+path (`bbx_daisy = { path = "../../../../bbx_audio/bbx_daisy", ... }`) or use a
+`[patch.crates-io]` override.
 
 ### AudioProcessor Pattern
 

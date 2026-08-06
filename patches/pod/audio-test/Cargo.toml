@@ -8,7 +8,7 @@ name = "audio-test"
 path = "src/main.rs"
 
 [dependencies]
-bbx_daisy = { path = "../../../../bbx_audio/bbx_daisy", default-features = false, features = ["pod"] }
+bbx_daisy = { version = "0.5", default-features = false, features = ["pod"] }
 cortex-m = "0.7"
 cortex-m-rt = "0.7"
 stm32h7xx-hal = { version = "0.16", features = ["stm32h750v", "rt"] }

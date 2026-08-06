@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Build every patch. Each patch is an independent Cargo crate that depends on the
-# local bbx_daisy crate; the ARM target and toolchain come from the repo's
+# published bbx_daisy crate; the ARM target and toolchain come from the repo's
 # .cargo/config.toml and rust-toolchain.toml.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

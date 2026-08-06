@@ -7,10 +7,6 @@ edition = "2021"
 name = "audio-test"
 path = "src/main.rs"
 
-[features]
-default = ["pod"]
-pod = []
-
 [dependencies]
 bbx_daisy = { path = "../../../../bbx_audio/bbx_daisy", default-features = false, features = ["pod"] }
 cortex-m = "0.7"
@@ -18,9 +14,6 @@ cortex-m-rt = "0.7"
 stm32h7xx-hal = { version = "0.16", features = ["stm32h750v", "rt"] }
 embedded-hal = "0.2"
 libm = "0.2"
-
-[lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ["cfg(feature, values(\"pod\"))"] }
 
 [profile.release]
 opt-level = "s"

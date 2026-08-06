@@ -3,68 +3,37 @@ name: Build
 on:
     pull_request:
     push:
-        branches: ['main', 'develop']
+        branches: [main, develop, refactor/rust-rewrite]
 
 jobs:
-    Init:
+    patches:
+        name: Build Patches (Rust)
         runs-on: ubuntu-latest
         steps:
-            -   name: "Checkout"
-                uses: actions/checkout@v4
-                with:
-                    submodules: recursive
-
-            -   name: "Install ARM Toolchain"
-                uses: carlosperate/arm-none-eabi-gcc-action@v1
-                with:
-                    release: '10-2020-q4'
-
-            -   name: "Build Dependencies"
-                working-directory: ${{runner.workspace}}/flora
-                run: ./scripts/build.sh
-
-            -   name: "Build Example"
-                working-directory: ${{runner.workspace}}/flora/patches/init/kudzu
-                run: make
-
-    Pod:
-        runs-on: ubuntu-latest
-        steps:
-            -   name: "Checkout"
-                uses: actions/checkout@v4
-                with:
-                    submodules: recursive
-
-            -   name: "Install ARM Toolchain"
-                uses: carlosperate/arm-none-eabi-gcc-action@v1
-                with:
-                    release: '10-2020-q4'
-
-            -   name: "Build Dependencies"
-                working-directory: ${{runner.workspace}}/flora
-                run: ./scripts/build.sh
-
-            -   name: "Build Example"
-                working-directory: ${{runner.workspace}}/flora/patches/pod/lily
-                run: make
-
-    Seed:
-        runs-on: ubuntu-latest
-        steps:
-            - name: "Checkout"
+            - name: Checkout Repository
               uses: actions/checkout@v4
-              with:
-                  submodules: recursive
 
-            - name: "Install ARM Toolchain"
-              uses: carlosperate/arm-none-eabi-gcc-action@v1
-              with:
-                  release: '10-2020-q4'
+            - name: Read toolchain version
+              id: toolchain
+              run: echo "channel=$(grep 'channel' rust-toolchain.toml | cut -d'"' -f2)" >> $GITHUB_OUTPUT
 
-            - name: "Build Dependencies"
-              working-directory: ${{runner.workspace}}/flora
+            - name: Setup Rust
+              uses: dtolnay/rust-toolchain@master
+              with:
+                  toolchain: ${{ steps.toolchain.outputs.channel }}
+                  targets: thumbv7em-none-eabihf
+
+            - name: Cache Rust dependencies
+              uses: Swatinem/rust-cache@v2
+              with:
+                  workspaces: |
+                      patches/seed/blink
+                      patches/seed/daisy
+                      patches/pod/blink
+                      patches/pod/lily
+                      patches/pod/audio-test
+                      patches/init/kudzu
+                      patches/init/lotus
+
+            - name: Build All Patches
               run: ./scripts/build.sh
-
-            - name: "Build Example"
-              working-directory: ${{runner.workspace}}/flora/patches/seed/daisy
-              run: make

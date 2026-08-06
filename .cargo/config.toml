@@ -4,4 +4,8 @@ target = "thumbv7em-none-eabihf"
 [target.thumbv7em-none-eabihf]
 rustflags = [
   "-C", "link-arg=-Tlink.x",
+  # Enable the STM32H750's double-precision FPU (FPv5-D16) and Cortex-M7
+  # tuning — without this, all f64 DSP math lowers to slow software-float
+  # __aeabi_d* calls. Matches bbx_daisy/.cargo/config.toml upstream.
+  "-C", "target-cpu=cortex-m7",
 ]
